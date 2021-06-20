@@ -59,6 +59,7 @@ Each test case that is answered correctly will earn 10 points.
 public class Dividing {
     static int minNoOfPlanks;
     static ArrayList<Integer> logs = new ArrayList<>();
+    static ArrayList<String> inputs = new ArrayList<>();
     static int GCD = 10000000; //start with upper bound and reduce
     
     //this program attemps to find the maximumLength for diving planks L1...Ln into a minNoOfPlanks of equal size
@@ -66,15 +67,21 @@ public class Dividing {
         Scanner sc = new Scanner(System.in);
         //Sample Input: 4 10 14 15 11 6
         String input = sc.nextLine();
-        String[] inputs = input.split(" ");
-        for (int i = 0; i < inputs.length; i++) {
-            if (i == inputs.length-1){
+        while (!"".equals(input)){
+            inputs.add(input);
+            //System.out.println("= "+input);
+            input = sc.nextLine();
+            
+        }
+        
+        for (int i = 0; i < inputs.size(); i++) {
+            if (i == inputs.size()-1){
                 //System.out.println("Minimum # of planks: "+inputs[i]);
-                minNoOfPlanks = Integer.parseInt(inputs[i]);
+                minNoOfPlanks = Integer.parseInt(inputs.get(i));
             }
             else{
                 //System.out.println("Log "+i+" size: "+inputs[i]);
-                int j = Integer.parseInt(inputs[i]);
+                int j = Integer.parseInt(inputs.get(i));
                 logs.add(j);
                 
             }
@@ -114,6 +121,6 @@ public class Dividing {
     }
     
     static void output(){
-        System.out.println("M: "+GCD);
+        System.out.println(GCD+"\n");
     }
 }
